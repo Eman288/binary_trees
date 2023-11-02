@@ -8,38 +8,39 @@
 
 size_t binary_tree_height(const binary_tree_t *tree)
 {
-        size_t height, height1, height2;
+	size_t height, height1, height2;
 
-        height1 = 0;
-        height2 = 0;
-        if (tree == NULL)
-                return (0);
+	height1 = 0;
+	height2 = 0;
 
-        if (tree->left != NULL)
-        {
-                height1 = 1 + binary_tree_height(tree->left);
-        }
-        else
-        {
-                height1 = 0;
-        }
-        if (tree->right != NULL)
-        {
-                height2 = 1 + binary_tree_height(tree->right);
-        }
-        else
-        {
-                height2 = 0;
-        }
-        if (height1 > height2)
-        {
-                height = height1;
-        }
-        else
-        {
-                height = height2;
-        }
-        return (height);
+	if (tree == NULL)
+		return (0);
+
+	if (tree->left != NULL)
+	{
+		height1 = 1 + binary_tree_height(tree->left);
+	}
+	else
+	{
+		height1 = 0;
+	}
+	if (tree->right != NULL)
+	{
+		height2 = 1 + binary_tree_height(tree->right);
+	}
+	else
+	{
+		height2 = 0;
+	}
+	if (height1 > height2)
+	{
+		height = height1;
+	}
+	else
+	{
+		height = height2;
+	}
+	return (height);
 }
 
 
@@ -47,17 +48,19 @@ size_t binary_tree_height(const binary_tree_t *tree)
  * print_current_level - Prints all nodes that are ont he current level
  * @tree: The root of the current recursive version of the tree
  * @i: The level
+ * @func: The function to be used on each node
  *
  * Return: None
  */
 
-void print_current_level(const binary_tree_t *tree, size_t i, void (*func)(int))
+void print_current_level(const binary_tree_t *tree, size_t i,
+		void (*func)(int))
 {
 	if (tree == NULL)
 		return;
 	if (i == 0)
 		func(tree->n);
-	else if(i > 0)
+	else if (i > 0)
 	{
 		print_current_level(tree->left, i - 1, func);
 		print_current_level(tree->right, i - 1, func);
