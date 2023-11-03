@@ -4,6 +4,8 @@
  * array_to_bst - Turns an array into a binary search tree
  * @array: The array
  * @size: size of the aray
+ *
+ * Return: pointer to teh root of the created bst
  */
 
 bst_t *array_to_bst(int *array, size_t size)
